@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 451289319737656329}
   - component: {fileID: 5244022088768968327}
   - component: {fileID: 6190476122119347863}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: group_0_2829873
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 9070064849342421567}
   - component: {fileID: 863384417461573295}
   - component: {fileID: 1969996884441754156}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: group_0_15277357
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,6 +180,37 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &5083311747186157457
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8851341800257073305}
+  m_Layer: 7
+  m_Name: CameraHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8851341800257073305
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5083311747186157457}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2121739093664244524}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6132828998612812647
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,9 +223,10 @@ GameObject:
   - component: {fileID: 7185820162157747574}
   - component: {fileID: 1968302242807280627}
   - component: {fileID: 3744956720739140207}
-  - component: {fileID: 4500810857641039596}
   - component: {fileID: 2942297320560362789}
-  m_Layer: 0
+  - component: {fileID: 7850335331226573714}
+  - component: {fileID: 7497904737760204062}
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -215,6 +247,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8072986524604525139}
+  - {fileID: 8851341800257073305}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!33 &7185820162157747574
@@ -232,7 +265,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6132828998612812647}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -295,7 +328,32 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &4500810857641039596
+--- !u!114 &2942297320560362789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6132828998612812647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef673874eff91eb4b93e7f1e15cd55ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::player.PlayerMovement
+  moveAcceleration: 100
+  maxSpeed: 50
+  jumpForce: 10
+  jumpCooldown: 0.25
+  airMultiplier: 0.1
+  readyToJump: 1
+  isGrounded: 0
+  playerHeight: 1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  groundDrag: 10
+  rotationSpeed: 2200
+--- !u!54 &7850335331226573714
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -322,7 +380,7 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 120
   m_CollisionDetection: 1
---- !u!114 &2942297320560362789
+--- !u!114 &7497904737760204062
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -331,60 +389,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 6132828998612812647}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef673874eff91eb4b93e7f1e15cd55ac, type: 3}
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::player.PlayerMovement
-  playerRun:
-    m_Name: Player Run
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 590b7b12-6001-4015-9997-78f0297b77e7
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 2D Vector
-      m_Id: 93db5ab7-1497-4870-9886-b37f1d5c5af0
-      m_Path: 2DVector
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Player Run
-      m_Flags: 4
-    - m_Name: up
-      m_Id: 9197fd62-c321-4ccd-be56-6ef07c2d1c1b
-      m_Path: 
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Player Run
-      m_Flags: 8
-    - m_Name: down
-      m_Id: 7be29f12-a799-45b0-8abf-ecf112921338
-      m_Path: 
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Player Run
-      m_Flags: 8
-    - m_Name: left
-      m_Id: 5db04002-2872-4e9b-b9eb-8127089a2d2b
-      m_Path: <Keyboard>/a
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Player Run
-      m_Flags: 8
-    - m_Name: right
-      m_Id: 43c922c7-0562-4dfb-ad90-774b483e27d0
-      m_Path: <Keyboard>/d
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Player Run
-      m_Flags: 8
-    m_Flags: 0
-  moveSpeed: 10
-  rotationSpeed: 720
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
+  m_Actions: {fileID: -944628639613478452, guid: 0b835aaaecaa8914b8fd868ed3e961ea, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: Keyboard&Mouse
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &7229080084850356713
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,7 +421,7 @@ GameObject:
   - component: {fileID: 2051706279560996673}
   - component: {fileID: 7472802321066594341}
   - component: {fileID: 7012801096976572503}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: group_0_16768282
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -484,7 +509,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8072986524604525139}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: tinker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -499,8 +524,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8881893223658762473}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0.70710677, z: -0.70710677, w: 0}
-  m_LocalPosition: {x: -0.3, y: -0.5, z: -0.5}
+  m_LocalRotation: {x: -0.70710677, y: 0, z: 0, w: 0.70710677}
+  m_LocalPosition: {x: 0.3, y: -0.5, z: 0.5}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -508,4 +533,4 @@ Transform:
   - {fileID: 9070064849342421567}
   - {fileID: 2051706279560996673}
   m_Father: {fileID: 2121739093664244524}
-  m_LocalEulerAnglesHint: {x: -90, y: -90, z: -90}
+  m_LocalEulerAnglesHint: {x: -90, y: 90, z: -90}
