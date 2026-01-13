@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 3
   tags:
   - Food
+  - Enemy
+  - Weak Point
   layers:
   - Default
   - TransparentFX

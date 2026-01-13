@@ -1,15 +1,19 @@
 using UnityEngine;
+using TMPro;
 
 public class FoodCollection : MonoBehaviour
 {
-    private int foodCount = 0;
+    public int foodCount = 0;
+
+    public TextMeshProUGUI foodText;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Food"))
+        if (other.CompareTag("Player"))
         {
             foodCount++;
-            Destroy(other.gameObject);
+            foodText.text = "Food: " + foodCount.ToString();
+            Destroy(gameObject);
         }
     }
 }
